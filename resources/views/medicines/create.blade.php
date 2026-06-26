@@ -28,9 +28,14 @@
         @endif
 
         <!-- Form -->
-        <form action="{{ route('medicines.store') }}" method="POST" class="space-y-6">
+        <form action="{{ route('medicines.store') }}" method="POST" class="space-y-6" enctype="multipart/form-data">
             @csrf
 
+            <!-- images -->
+               <div>
+                <label class="mb-1.5 block text-sm font-semibold text-slate-750">Medicine Image</label>
+                <input type="file" name="image"  class="w-full rounded-lg border border-slate-200 bg-slate-50/50 px-3.5 py-2.5 text-sm text-slate-900 focus:border-teal-500 focus:bg-white focus:outline-none transition-all duration-150 shadow-xs"  >
+            </div>
             <!-- Name -->
             <div>
                 <label class="mb-1.5 block text-sm font-semibold text-slate-750">Medicine Name</label>

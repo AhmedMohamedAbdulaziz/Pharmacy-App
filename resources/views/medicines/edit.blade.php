@@ -28,10 +28,26 @@
         @endif
 
         <!-- Form -->
-        <form action="{{ route('medicines.update', $medicine) }}" method="POST" class="space-y-6">
+        <form action="{{ route('medicines.update', $medicine) }}" method="POST" class="space-y-6" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
+            <!-- images -->
+             <div class="grid gap-4 sm:grid-cols-3 items-center rounded-xl border border-slate-200 bg-slate-50/30 p-4">
+                <div class="flex flex-col items-center justify-center">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">Current Image</span>
+                    @if($medicine->hasMedia('medicines'))
+                        <img src="{{ $medicine->getFirstMediaUrl('medicines') }}" alt="{{ $medicine->name }}" class="w-20 h-20 rounded-lg object-cover border border-slate-200 shadow-xs">
+                    @else
+                        <div class="w-20 h-20 rounded-lg bg-slate-100 border border-dashed border-slate-300 flex items-center justify-center text-xs text-slate-400">No Image</div>
+                    @endif
+                </div>
+                <div class="sm:col-span-2">
+                    <label class="mb-1.5 block text-sm font-semibold text-slate-750">Upload New Image</label>
+                    <input type="file" name="image" accept="image/*" class="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-teal-50 file:text-teal-700 hover:file:bg-teal-100 transition-colors cursor-pointer" />
+                    <p class="mt-1 text-xs text-slate-400">Supported formats: JPG, PNG, WEBP.</p>
+                </div>
+            </div>
             <!-- Name -->
             <div>
                 <label class="mb-1.5 block text-sm font-semibold text-slate-750">Medicine Name</label>

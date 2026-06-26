@@ -26,6 +26,20 @@
 
         <!-- Specifications Grid -->
         <div class="grid gap-6 sm:grid-cols-2">
+            <!-- Image -->
+              <div class="rounded-xl border border-slate-150 bg-slate-50/50 p-5 sm:col-span-2 flex flex-col items-center justify-center">
+                <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">Medicine Image</span>
+                @if($medicine->hasMedia('medicines'))
+                    <img src="{{ $medicine->getFirstMediaUrl('medicines') }}" alt="{{ $medicine->name }}" class="w-40 h-40 rounded-xl object-cover shadow-sm border border-slate-200">
+                @else
+                    <div class="w-40 h-40 rounded-xl bg-slate-100 flex flex-col items-center justify-center text-slate-400 gap-2 border border-dashed border-slate-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375 0 1 1-.75 0 .375 0 0 1 text-.75 0Z" />
+                        </svg>
+                        <span class="text-xs font-medium">No Image Available</span>
+                    </div>
+                @endif
+            </div>
             <!-- Name -->
             <div class="rounded-xl border border-slate-150 bg-slate-50/50 p-5">
                 <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">Medicine Name</span>
